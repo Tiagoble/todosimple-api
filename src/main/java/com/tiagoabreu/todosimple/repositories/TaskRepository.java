@@ -13,5 +13,5 @@ import com.tiagoabreu.todosimple.models.Task;
 public interface TaskRepository extends JpaRepository<Task, Long>{
     
     @Query(value = "SELECT t FROM Task t WHERE t.user.id = :id")
-    List<Task> FindByUser_ID(@Param("id") Long id);
+    List<Task> FindByUser_Id(@Param("id") Long id);
 }
