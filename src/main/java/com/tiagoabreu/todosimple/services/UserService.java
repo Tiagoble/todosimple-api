@@ -36,7 +36,6 @@ public class UserService {
 
     public void delete(Long id){
         findById(id);
-
         try {
             this.UserRepository.deleteById(id);
         } catch (Exception e) {
