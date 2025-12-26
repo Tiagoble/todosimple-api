@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tiagoabreu.todosimple.models.Task;
 import com.tiagoabreu.todosimple.models.User;
 import com.tiagoabreu.todosimple.repositories.TaskRepository;
+import com.tiagoabreu.todosimple.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class TaskService {
@@ -22,7 +23,7 @@ public class TaskService {
 
     public Task findById(Long id){
         Optional<Task> task = this.taskRepository.findById(id);
-        return task.orElseThrow(() -> new RuntimeException("Task não encontrada! id: "+id+", Tipo: "+Task.class.getName()));
+        return task.orElseThrow(() -> new ObjectNotFoundException("Task não encontrada! id: "+id+", Tipo: "+Task.class.getName()));
     }
 
     public List<Task> findAllByUserId(Long userId){
